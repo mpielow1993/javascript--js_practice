@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        console.log("Hello World!");
+        
+        var a; //in-line comment - means it is at the end of a line of code
+        /* this is 
+        a multi-line comment */
+        
+        console.log(a); //this gives a value of 'undefined'
+        var b = 2;
+        
+        a = 7;
+        b = a;
+        
+        //CHECK
+        console.log(a);
+        
+        //CHAPTER 4 - UNINITALISED VARIABLES
+        
+        //initialise these three variables
+        var a = 5;
+        var b = 10;
+        var c = "I am a";
+        
+        //do NOT change the code below this line
+        a = a + 1;
+        b = b + 5;
+        c = c + " String!";
+        
+        //FINDING THE LENGTH OF A STRING
+        
+        //EXAMPLE
+        var firstNameLength = 0;
+        var firstName = "Ada";
+        
+        firstNameLength = firstName.length;
+        
+        //SETUP
+        var lastNameLength = 0;
+        var lastName = "Lovelace";
+        
+        //Only change code below this line
+        lastNameLength = lastName.length;
+        
+        //Check the value has changed in the console
+        console.log(lastNameLength);
+        
+        //BRACKET NOTATION WITHIN A STRING
+        var firstLetterOfFirstName = "";
+        firstLetterOfFirstName = firstName[0];
+        
+        var firstLetterOfLastName = "";
+        firstLetterOfLastName = lastName[0];
+        
+        //Check the value has changed in the console
+        console.log(firstLetterOfLastName);
+        
+        //IMMUTABLE STRINGS
+        
+        //Strings are immutable, meaning that they cannot be created
+        //This does NOT mean that they cannot be changed, just that the indivual characters of a string literal cannot be changed
+        
+        //EXAMPLE
+        
+        var myStr = "Jello World!";
+        
+        //myStr[0] = "H";  //Fix me
+        myStr = "Hello World!"
+        
+        console.log(myStr);
+        
+        //This will generate an error when run die to the immutable property of strings 
+        
+        //BRACKET NOTATION TO FIND THE LAST CHARACTER IN A STRING
+        
+        //You can also use bracket notation to find the last letter in a string, even if you don't know how many letters are in the string
+        //This is done based on the length
+        
+        //EXAMPLE
+        var lastLetterOfFirstName = firstName[firstName.length - 1];
+        
+        //SETUP
+        var lastName = "Lovelace"
+        var lastLetterOfLastName = lastName[lastName.length - 1];
+        
+        console.log(lastLetterOfFirstName + lastLetterOfLastName);
+        
+        //BRACKET NOTATION TO FIND THE Nth-TO-LAST CHARACTER IN A STRING
+        
+        //We have seen how to use bracket notation to find the last letter of a string
+        //We can also use it to find the nth-to-last letter in a string like so:
+        
+        //var nthToLastLetterOfLastName = lastName[lastName.length - n];
+        
+        var secondToLastLetterOfLastName = lastName[lastName.length - 2];
+        console.log(secondToLastLetterOfLastName);
+        
+        //WORD BLANKS
+        
+        //We are going to use our knowledge of strings to build a 'madlibs'-style wordgame.
+        //In the madlib game, you are presented with some sentence with missing words (nouns, verbs, adjectives, adverbs).
+        //You then fill in the missing parts of the sentence with words of your choice to try to make the sentence humourous or make sense.
+        //This game also uses a function.
+        
+        function wordBlanks(myNoun, myAdjective, myVerb, myAdverb){
+            var result = "The " + myAdjective + " " + myNoun + " " + myVerb + " to the store " + myAdverb;
+            return result;
+        }
+        
+        console.log(wordBlanks("dog", "big", "ran", "quickly"));
+        
+        //STORE MULTIPLE VALUES WITH ARRAYS
+        
+        //Arrays allow you to store several pieces of data in one place
+        
+        //EXAMPLE
+        
+        //In JS, the elements in arrays can be of any data type.
+        var ourArray = ["John", 23];
+        
+        var myArray = ["Quincy", 1];
+        
+        //NESTED ARRAYS
+        
+        //When on of the elements in a array is another array, this is called a 'nested array' or a 'multi-dimensional' array
+        
+        //EXAMPLE
+        
+        var nestedArray = [ ["the universe", 42], ["everything", 101010] ];
+        
+        var secondNestedArray = [ ["Bulls", 23], ["White Sox", 45] ];
+        
+        //ACCESS ARRAY DATA WITH INDEXES
+        
+        //Earlier, we learned how to use bracket notation to find indexes in a string.
+        //You can do the same thing with arrays
+        
+        //EXAMPLE
+        var simpleArray = [50, 60, 70];
+        var simpleData = simpleArray[0];    //equals 50
+        
+        //MODIFY ARRAY DATA WITH INDEXES
+        
+        //You can use array indexes to modify arrays.
+        //We tried to do this earlier with strings using Bracket Notation, but couldn't due to the immutable property of strings.
+        //This, however, is possible with arrays.
+        
+        //EXAMPLE
+        var modifyArray = [18, 64, 99];
+        modifyArray[1] = 45;    //modifyArray now equals [18, 64, 99]
+        
+        var modifyArray2 = [18, 64, 99];
+        modifyArray2[0] = 45;
+        
+        console.log(modifyArray2);
+        
+        //ACCESS MULTI-DIMENSIONAL ARRAYS WITH INDEXES
+        
+        //You can also use bracket notation to select an element in a multi-dimensional array.
+        
+        var accessMultiArray = [ [1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], 13 , 14 ];
+        
+        var accessMultiData = accessMultiArray[2][1];
+        
+        console.log(accessMultiData);
+        
+        //MANIPULATE ARRAYS WITH 'push()'
+        //You can append data onto the end of arrays using the 'push()' function
+        
+        var ourArray = ["Stimpson", "J", "cat"];
+        ourArray.push(["happy", "joy"]);
+        //"ourArray" now equals ["Stimpson", "J", "cat", ["happy", "joy"]]
+        
+        var myArray = [["John", 23], ["cat", 2]]
+        myArray.push(["dog", 3]);
+        //"myArray" now equals [["John", 23], ["cat", 2], ["dog", 3]]
+        
+        //Manipulate arrays with "pop()"
+        //We can remove an item from an array using the "pop" function
+        
+        //Example
+        var ourArray = [1, 2, 3];
+        var removedFromOurArray = ourArray.pop();
+        
+        //"removedFromOurArray" now equals 3 and "ourArray" now equals [1, 2]
+        
+        //Example
+        var myArray = [["John", 23], ["cat", 2]]
+        var removedFromMyArray = myArray.pop();
+        
+        console.log(myArray);
+        //myArray = ["John", 23]
+        
+        //MANIPULATE ARRAYS WITH "shift()"#
+        //The 'shift()' function is very similar to the 'pop()' function except it removes the first element of an array instead of the last element
+        
+        var ourArray = ["Stimpson", "J", ["cat"]];
+        var removedFromOurArray = ourArray.shift();
+        
+        //'removedFromOurArray = "Stimpson" and 'removedFromOurArray' = ["J", ["cat"]]
+        
+        var myArray = [["John", 23], ["dog", 3]]
+        var removedFromMyArray = myArray.shift();
+        
+        //removedFromMyArray = ["John", 23] and myArray = ["dog", 3]
+        
+        //MANIPULATE ARRAYS WITH unshift()
+        
+        //The 'unshift()' function is similar to the 'push()' array function
+        //The difference is that 'push()' adds an element to the end of an array, 'pop()' adds an element to the beginning of an array
+        
+        var ourArray = ["Stimpson", "J", "cat"];
+        ourArray.shift();                   //ourArray now equals ["J", "cat"]
+        ourArray.unshift(["Happy"]);        //ourArray now equals ["Happy", "J", "cat"]    
+                
+        var myArray = [["John", 23], ["dog", 3]]
+        myArray.unshift(["Paul", 35]);
+        
+        //SHOPPING LIST
+        //Another example of nested arrays
+        
+        var myList = [["cereal", 3], ["milk", 2], ["bananas", 3], ["juice", 2], ["eggs", 12]];
+        
+        //WRITE REUSABLE CODE WITH FUNCTIONS
+        //Functions allow us to create reusable code
+        
+        function ourReusableFunction(){
+            console.log("Hello world");
+        }
+        
+        ourReusableFunction();
+        
+        function reusableFunction(){
+            console.log("Hi World!");
+        }
+        
+        reusableFunction();
+        
+        //PASSING VALUES TO FUNCTIONS WITH ARGUMENTS
+        
+        function ourFunctionWithArgs(a, b) {
+            console.log(a - b);
+        }
+        
+        ourFunctionWithArgs(10, 5);     //outputs 5
+        
+        //Example
+        
+        function functionWithArgs(a, b) {
+            console.log(a + b);
+        }
+        
+        functionWithArgs(10, 5)     //outputs 15
+        
+        //GLOBAL SCOPE AND FUNCTIONS
+        
+        //"Scope" refers to the visibility of variables
+        //Variables which are defined outside of a function block have "global" scope
+        //Global scope means that they can be seen everywhere within your JS code
+        
+        //EXAMPLE
+        
+        //Declare a global variable called "myGlobal"
+        myGlobal = 10;
+        //since this is set outside of a function, we can see it anywhere within the whole code
+        
+        function fun1() {
+            
+            //Assign 5 to 'oopsGlobal' here
+            
+            oopsGlobal = 5;
+                    
+            //it is possible to set a variable without using the 'var' keyword
+            //You can see here that there is no 'var' keyword.
+            //normally if you do use a 'var' keyword, since this is within a function, it will be scoped to that function
+            //since there is no 'var' keyword, it will become global automatically
+            //i.e if we put in the 'var' keyword, 'oopsGlobal' would become undefined
+        }
+        
+        function fun2() {
+            
+            var output = "";
+            if(typeof myGlobal != "undefined") {        //this will NOT equal undefined if it is defined and the programme knows about the variable
+                                                        //because it is in global scope
+                output += "myGlobal: " + myGlobal;
+            }
+            if(typeof oopsGlobal != "undefined") {
+                output += "oopsGlobal: " + oopsGlobal;
+            }
+            console.log(output);
+        }
+        
+        
+        fun1();
+        fun2();
+
+        
+        //LOCAL SCOPE AND FUNCTIONS
+        
+        //variables that are declared within a function, as well as the function parameters, have a local scope
+        //that means that they are only visible from within the function
+        //let's see what this means
+        
+        function myLocalScope() {
+            
+            //declare variable 'myVar'
+            myVar = 5;
+            
+            //we have declared this variable with the 'var' keyword inside the function so it is only visible from within this function
+            
+            console.log(myVar);
+        }
+        
+        myLocalScope();
+        
+        //we now run 'console.log()' outside of the function, throws referenceError because myVar was attempted to be accessed from 
+        //outside of the function
+        
+        //console.log(myVar);
+        
+        //GLOBAL VS LOCAL SCOPE IN FUNCTIONS
+        
+        //It is possible to have both local and global variables with the same name
+        //When you do this, the local variable takes precedence over the global variable
+        
+        //Example
+        
+        //this is a global variable because it is declared outside of the function
+        var outerWear = "T-shirt";
+        
+        function myOutfit(){
+            
+            var outerWear = "Sweater";
+            
+            //If this program is run now, it will output 'Sweater'
+            //This is because the local variable took precedence over the global variable
+            
+            return outerWear;
+        }
+        
+        console.log(myOutfit());        //outputs "T-shirt"
+        console.log(outerWear);         //it still returns the value of the global variable 'outerWear'
+        
+        //RETURN A VALUE FROM A FUNCTION WITH RETURN
+        
+        //You can return a value from a function with the 'return' statement
+        
+        //Example
+        function minusSeven(num){
+            return num - 7;
+        }
+        
+        console.log(minusSeven(10));    //outputs 3
+        
+        //Example
+        function timesFive(num){
+            return num * 5;
+        }
+        
+        console.log(timesFive(5));      //outputs 25
+        
+        //UNDERSTANDING UNDEFINED VALUE RETURNED FROM A FUNCTION
+        
+        //Functions can have 'return' statements but they don't have to
+        
+        //EXAMPLE
+        
+        //this is defined before the function so it is a global variable
+        var sum = 0;
+        
+        function addThree(){
+            sum += 3;
+        }
+        
+        //if a return value is not specified, the return value is undefined
+        
+        //EXAMPLE
+        
+        function addFive() {
+            sum += 5;
+        }
+        
+        //ASSIGNMENT WITH A RETURN VALUE
+        
+        //Assigning a returned value to a variable is easy
+        
+        //Example
+        var changed = 0;
+        
+        function change(num) {
+            return (num + 5)/3;
+        }
+        
+        changed = change(10);
+        
+        //Example
+        var processed = 0;
+        
+        function processArg(num) {
+            return (num + 3)/5;
+        }
+        
+        processed = processArg(7);
+        
+        //STAND IN LINE
+        
+        //In Computer Science, a queue is an abstract data structure where items are kept in order
+        //New items can be added to the back of the queue and old items can be removed from the front of the queue
+        //We are going to simulate this right now
+        
+        //EXAMPLE
+        function nextInLine(array, item) {
+            //Your code here
+            array.push(item);
+            
+            return array.shift();
+        }
+        
+        var testArr = [1, 2, 3, 4, 5];
+        
+        console.log("Before: " + JSON.stringify(testArr));      //output: Before: [1, 2, 3, 4, 5]
+        console.log(nextInLine(testArr, 6));                    //output: 1
+        console.log("After: " + JSON.stringify(testArr));       //output: After: [2, 3, 4, 5, 6]
+        
+        //BOOLEAN VALUES
+        
+        //Booleans are another data type in JS that take only 2 values, TRUE or FALSE
+        
+        //Example
+        
+        function welcomeToBooleans() {
+            return false;
+        }
+        
+        //USING CONDITIONAL LOGIC WITH 'IF' STATMENTS
+        
+        //An 'if' statment is used to make decisions in code
+        
+        //Example
+        
+        function ourTrueOrFalse(isItTrue) {
+            if(isItTrue){
+                return "Yes it's true";
+            }
+            return "No it's false";
+        }
+        
+        function trueOrFalse(wasThatTrue) {
+            if(wasThatTrue) {
+                return "Yes that was true";
+            }
+            return "No, that was false";
+        }
+        
+        console.log(trueOrFalse(true));     //outputs "Yes that was true"
+        
+        //COMPARISON WITH THE EQUALITY OPERATOR
+        
+        //There are many comparison operators in JS that will return a boolean of 'true' or 'false'
+        //The most commonly used is the equality operator, and it is often used in an 'if' statment
+        
+        //Example
+        function testEqual(val) {
+            if(val == 12) {
+                return "Equal";
+            }
+            return "NOT Equal"
+        }
+        
+        //A single '=' sign is the assignment operator
+        
+        //CHange this value to 'test'
+        console.log(testEqual(10));     //outputs 'NOT equal', because 10 != 12
+        
+        //COMPARISON WITH THE STRICT EQUALITY OPERATOR
+        
+        //We learned about the equality operator which is the '=='
+        //There is also the strict equality sign, the '==='
+        
+        //Example
+        function testStrict(val) {
+            if(val === 7) {
+                return "Equal";
+            }
+            return "Not Equal";
+        }
+        
+        testStrict(10);
+        
+        //The difference is that the equality operator ('==') attempts to convert both values being compared to a common type
+        //The strict equality operator does not do the type conversion
+        
+        //3 === 3 returns TRUE
+        //3 === '3' returns FALSE
+        
+        //Both if these statements would be TRUE if the '==' was used, as the string in the second statement would be converted to an number
+        
+        //If we pass 7 as an argument for the above function the 'if' statement will evaluate to TRUE
+        //However, if we passed "7", it would return FALSE
+        
+        //PRACTICE COMPARING DIFFERENT VALUES
+        
+        //We will do one more review with the equality operator and the strict equality operator
+        
+        //EXAMPLE
+        function compareEquality(a, b) {
+            if(a == b) {    //Change this line
+                return "Equal";
+            }
+            return "NOT Equal";
+        }
+        
+        //change this value to test
+        console.log(compareEquality(10, "10"));
+        
+        //This returns "Equal", because it's checking if the number 10 and the string 10 are equal
+        //i.e. if a == b => the number 10 equals a 'strict' number 10
+        //The '==' operator performs type conversion implicitly
+        
+        //COMPARISON WITH THE INEQUALITY OPERATOR
+        
+        //We will now look at the inequality operator, which is basically the opposite of the equality operator
+        
+        //Example
+        
+        function testNotEqual(val) {
+            if(val != 99) {     //Change this line
+                return "NOT Equal";
+            }
+            return "Equal";
+        }
+        
+        //Change this value to test
+        console.log(testNotEqual(10));      //output = "NOT Equal"
+        
+        //Comparison with the strict inequality operator
+        
+        //The strict inequality operator is basically the opposite of the strict equality operator
+        //The '!==' sign will check for inequality, but will not perform implicit type conversion
+        
+        //COMPARISONS WITH THE LOGICAL 'AND' OPERATOR
+        
+        //We can also use the 'greater than' operator, as shown below:
+        
+        function testGreaterThan(val) {
+            if(val > 100) {   //Change this line
+                return "Over 100";
+            }
+            
+            if(val > 10) {
+                return "Over 10";
+            }
+            return "10 or under";
+        }
+        
+        //Change this value to test
+        console.log(testGreaterThan(10));       //outputs 10 or under
+        
+        //COMPARISON WITH THE GREATER THAN OR EQUAL TO OPERATOR
+        
+        //We can also use the 'greater than or equal to' operator, shown below:
+        
+        function testGreaterOrEqual(val) {
+            if(val >= 20){
+                return "20 or over";
+            }
+            
+            if(val >= 10) {
+                return "10 or over";
+            }
+            
+            return "Less than 10";
+        }
+        
+        console.log(testGreaterOrEqual(10));        //outputs "10 or over"
+        
+        //COMPARISON WITH THE LESS THAN OPERATOR
+        
+        //We will now see an example of the 'less than' operator within the function below:
+        
+        function testLessThan(val) {
+            if(val < 25) {
+                return "Under 25";
+            }
+            if(val < 55) {
+                return "Under 55"
+            }
+            return "55 or over";
+        }
+        
+        console.log(testLessThan(10));      //outputs "Under 25"
+        
+        //COMPARISON WITH THE LESS THAN OR EQUAL TO OPERATOR
+        
+        //we also have the less than or equal to operator that we can use in JS
+        
+        function testLessOrEqual(val) {
+            if(val <= 12) {
+                return "Smaller than or equal to 12";
+            }
+            if(val <= 24) {
+                return "Smaller than or equal to 24";
+            }
+            return "Over 24";
+        }
+        
+        console.log(testLessOrEqual(10));       //outputs "smaller than or equal to 12"
+        
+        //COMPARISON WITH THE LOGICAL 'AND' OPERATOR
+        
+        //Sometimes you need to check if two things are true at the same time
+        //Can do this using a nested 'if' statement or using the logical 'AND' operator
+        
+        //Example
+        function testLogicalAnd(val) {
+            if(val <= 50 && val >= 25) {
+                return "Yes";
+            }
+            return "No";
+        }
+        
+        console.log(testLogicalAnd(10));        //outputs "No"
+        
+        //COMPARISONS WITH THE LOGICAL 'OR' OPERATOR
+        
+        //In the code below, we are checking that the value is not below 10 and 20
+        //Can do this using 2 separate 'if' statements or the logical OR symbol '||'
+        
+        function testLogicalOr(val) {
+            
+            if(val < 10 || val > 20) {
+                return "Outside";
+            }
+            
+            return "Inside";
+        }
+        
+        testLogicalOr(15);
+        
+        //'Else' statements
+        
+        //When an 'if' statement is true, the block of code after an 'if' statement will be evaluated
+        //If it is not true, nothing happens
+        //However, in an 'else' statment, an alternative block of code is executed if the 'if' condition is not true
+        
+        //Example
+        function testElse(val) {
+            var result = "";
+            
+            if(val > 5) {
+                result = "Bigger than 5";
+            } else {
+                result = "5 or smaller";
+            }
+            
+            return result;
+        }
+        
+        //'ELSE IF' STATMENTS
+        
+        //If you have multiple conditions that need to be addressed, you can use 'else if' statments
+        
+        //Example
+        
+        function testElseIf(val) {
+            if(val > 10) {
+                return "Greater than 10";
+            } else if(val < 5) {
+                return "Smaller than 5";
+            } else {
+                return "Between 5 and 10";
+            }
+        }
+        
+        console.log(testElseIf(7));     //outputs "Between 5 and 10"
+        
+        //LOGICAL ORDER IN 'IF/ELSE' STATEMENTS
+        
+        //When you are using 'else/if' statements, order is very important
+        
+        //Example
+        function orderMyLogic(val) {
+            if(val < 10) {
+                return "Less than 10";
+            } else if(val < 5) {
+                return "Less than 5";
+            } else {
+                return "Greater than or equal to 10";
+            }
+        }
+        
+        console.log(orderMyLogic(7));       //outputs "Less than 10"
+        
+        //Now, if we were to input 3 as an argument here, it would still evaluate to "less than 10", as the first 'if' statment is still true
+        //In other words, once the first condition is met, it doesn't even check for the rest of the conditions
+        //It would be better if it evaluated to "less than 5"
+        
+        //CHAINING 'IF/ELSE' STATMENTS
+        
+        //You can also chain 'if' and 'else/if' statements
+        
+        //Example
+        /*
+        
+        Write 'if' and 'else/if' statments to satisfy the following conditions:
+        
+        num < 5 - return "Tiny"
+        num < 10 - return "Small"
+        num < 15 - return "Medium"
+        num < 20 - return "Large"   
+        num < 25 - return "Huge"
+        
+        */
+        
+        function returnSize(val) {
+            if(val < 5) {
+                return "Tiny";
+            } else if(val < 10) {
+                return "Small";
+            } else if(val < 15) {
+                return "Medium";
+            } else if(val < 20) {
+                return "Large"
+            } else if(val < 25) {
+                return "Huge";
+            } else {
+                return "Invalid size";
+            }
+        }
+        
+        console.log(returnSize(24));
+        
+        //GOLF CODE
+        
+        var names = ["Hole-in-one", "Eagle", "Birdie", "Par", "Bogey", "Double Bogey", "Complete Shit"]
+        
+        function golfScore(par, strokes) {
+            if(strokes == 1){
+                return names[0];
+            } else if(strokes == par - 2) {
+                return names[1];
+            } else if(strokes == par - 1) {
+                return names[2];
+            } else if(strokes == par) {
+                return names[3];
+            } else if(strokes == par + 1) {
+                return names[4];
+            } else if(strokes == par + 2) {
+                return names[5];
+            } else {
+                return names[6];
+            }
+        }
+        
+        console.log(golfScore(4, 8));
+        
+        //Note the use of the array to avoid hard-coding the expressions in the 'if' statment
+        
+        //'SWITCH' STATEMENTS
+        
+        //Instead of using chained 'if/else' statments you can use 'switch' statments
+        //A 'switch' statement tests a value and can have many 'case' statements, which define various possible values
+        //Let's see how this works
+        
+        //Example
+        
+        var answers = ["alpha", "beta", "gamma", "delta"];
+        
+        function caseInSwitch(val) {
+            var answer = "";
+            
+            switch(val) {
+                case 1:
+                    answer += answers[0];
+                    break;
+                case 2:
+                    answer += answers[1];
+                    break;
+                case 3:
+                    answer += answers[2];
+                    break;
+                case 4:
+                    answer += answers[3];
+                    break;
+                default:
+                    answer += "Not defined";
+                    break;
+            }
+            return answer;
+        }
+        
+        //Change this value to test
+        console.log(caseInSwitch(5));
+        
+        /*
+        
+        Write a switch statement which tests val and sets the answer for the following conditions:
+        
+        1 - "alpha"
+        2 - "beta"
+        3 - "gamma"
+        4 - "delta"
+        
+        */
+        
+        //DEFAULT OPTION IN 'SWITCH' STATEMENTS
+        
+        //We will now talk about the 'default' option in a 'switch' statment
+        //The default option is similar to 'else' in an 'if/else' statement
+        
+        //Example
+        
+        function switchOfStuff(val) {
+            var answer = "";
+            
+            switch(val) {
+                case "a":
+                    answer += "apple"
+                    break;
+                case "b":
+                    answer += "bird"
+                    break;
+                case "c":
+                    answer += "cat"
+                    break;
+                default:
+                    answer = "stuff";
+                    break;
+            }
+            return answer;
+        }
+        
+        console.log(switchOfStuff(5));
+        
+        //Without the 'default' statment, if we were to pass an argument of, say, 2 into the function, it would return the initial value of answer (i.e an empty string)
+        //We now inplement 'default' to handle any other arguments passed into the function
+        
+        //MULTIPLE IDENTICAL OPTIONS IN 'SWITCH' STATEMENTS
+        
+        //Sometimes you want a 'switch' statement where multiple inputs give the same output
+        //This is easily done by omitting the 'break' statement
+        
+        //Example
+        function sequentialSizes(val) {
+            var answer = "";
+            
+            switch(val) {
+                
+                //Since there are no 'break' statements in between the cases, it will go to the next one automatically
+                case 1:
+                case 2:
+                case 3:
+                    answer = "Low";
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    answer = "Medium";
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                    answer = "High";
+                    break;
+            }
+            
+            return answer;
+        }
+        
+        console.log(sequentialSizes(7));
+        
+        //REPLACING 'IF/ELSE' CHAINS WITH 'SWITCH'
+        
+        //Sometimes a switch statement can be easier to write and easier to understand than a chain of if/else statments
+        
+        //Example
+        function chainToSwitch(val) {
+            
+            var answer = "";
+            
+            switch(val) {
+                case "bob":
+                    answer = "Marley";
+                    break;
+                case 42:
+                    answer = "The answer";
+                    break;
+                case 1:
+                    answer = "There is no #1";
+                    break;
+                case 99:
+                    answer = "Missed me by this much";
+                    break;
+                case 7:
+                    answer = "Ate 9";
+                    break;
+                
+            }
+        }
+        
+        //RETURNING BOOLEAN VALUES FROM FUNCTIONS
+        
+        //Here is a little trick when you want a function to return a Boolean value
+        
+        //Example
+        function isLess(a, b) {
+            
+            //All comparison operators return a Boolean TRUE or FALSE value
+            
+            //So instead of this:
+            
+            /*
+            
+            if(a < b) {
+                return true;
+            } else {
+                return false;
+            }
+            
+            */
+            
+            //We can just do this:
+            
+            return a < b;
+            
+        }
+        
+        //Change these values to test
+        console.log(isLess(20, 15));
+        
+        //RETURNING EARLY PATTERN FROM FUNCTIONS
+        
+        //We have already seen previous examples of this, but you can return early from a function using the 'return' statement
+        
+        //Example
+        function abTest(a, b) {
+            
+            //We will now implement code such that, if a or b < 0, the function will return a value of 'undefined'
+            
+            if(a < 0 || b < 0) {
+                return undefined;
+            }
+            
+            return Math.round(Math.pow(Math.sqrt(a) + Math.sqrt(b), 2))
+        }
+        
+        //Change values below to test your code
+        console.log(abTest(-9, 2));
+        
+        //COUNTING CARDS
+        
+        //We are going to create a Blackjack card-counting function
+        
+        //Declare global 'count' variable
+        
+        var count = 0;
+        
+        function cc(card) {
+            
+            switch(card) {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                    count++;
+                    break;
+                case 10:
+                case "J":
+                case "Q":
+                case "K":
+                case "A":
+                    count--;
+                    break;
+            }
+            
+            var holdbet = "hold"
+            if(count > 0) {
+                holdbet = "Bet";
+            }
+            
+            return count + " " + holdbet;
+        }
+        
+        console.log(cc(2));
+        console.log(cc("K"));
+        console.log(cc(10));
+        console.log(cc("Q"));
+        console.log(cc(8));
+        console.log(cc(2));
+        console.log(cc(4));
+        console.log(cc(2));
+        console.log(cc(3));
+        console.log(cc(3));
+        
+        //BUILD JAVASCRIPT OBJECTS
+        
+        //Objects are similar to arrays
+        //The diffence is that, instead of using indexes to access indiviual elements, you use properties
+        
+        //Example
+        var ourDog = {
+            "name" : "Camper",          //the properties are everything before the colon
+            "legs" : 4,                 //the values are the things after the colon
+            "tails" : 1,                //properties can be strings, numbers, arrays, i.e any data type in JS
+            "friends" : ["everything!"]
+        };
+        
+        //Now, we are going to create our own dog
+        var myDog = {
+            "name" : "Quincy",
+            "legs" : 3,
+            "tails" : 2,
+            "friends" : [] 
+        };
+        
+        //ACCESSING OBJECT PROPERTIES WITH 'DOT' NOTATION
+        
+        //There are two main ways to access a property on an object
+        //The first is 'dot' notation
+        
+        //Example
+        var testObj = {
+            "hat" : "ballcap",
+            "shirt" : "jersey",
+            "shoes" : "cleats"
+        };
+        
+        var hatValue = testObj.hat;
+        var shirtValue = testObj.shirt;
+        
+        console.log(hatValue);
+        console.log(shirtValue);
+        
+        //ACCESSING OBJECT PROPERTIES WITH BRACKET NOTATION
+        
+        //The second is 'bracket' notation
+        
+        //You can use brakcet notation anytime, BUT it is required if the property name has a space in it
+        
+        var testObj = {
+            "an entree" : "hamburger",
+            "my side" : "veggies",
+            "the drink" : "water"
+        };
+        
+        var entreeValue = testObj["an entree"];
+        var drinkValue = testObj["the drink"];
+        
+        console.log(entreeValue);
+        console.log(drinkValue);
+        
+        //ACCESSING OBJECT PROPERTIES WITH VARIABLES
+        
+        //Bracket notation can also be used to look up object properties using variables
+        
+        var testObj = {
+            12 : "Namath",
+            16 : "Montana",
+            19 : "Unitas"
+        };
+        
+        //We are going to set these variables to be one of the numbers
+        
+        var playerNumber = 16;
+        var player = testObj[playerNumber];
+        
+        console.log(player);    //outputs "Montana"
+        
+        //UPDATING OBJECT PROPERTIES
+        
+        //We can use dot notation to update object properties
+        
+        //Example
+        
+        var ourDog = {
+            "name" : "Camper",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["everything!"]
+        };
+        
+        ourDog.name = "Happy Camper";
+        
+        var myDog = {
+            "name" : "Coder",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["freeCodeCamp Campers"]           
+        };
+        
+        myDog.name = "Happy Coder";
+        
+        //ADD NEW PROPERTIES TO AN OBJECT
+        
+        //You can add new properties to an object using dot notation or bracket notation
+        
+        //Example
+        
+        var ourDog = {
+            "name" : "Camper",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["everything!"]
+        };
+        
+        ourDog.bark = "bow-wow";
+        
+        var myDog = {
+            "name" : "Happy Coder",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["freeCodeCamp Campers"]           
+        };
+        
+        myDog["bark"] = "woof"
+        
+        //DELETE PROPERTIES FROM AN OBJECT
+        
+        //It is simple to delete a property from an object
+        
+        //Example
+        
+        var ourDog = {
+            "name" : "Camper",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["everything!"],
+            "bark" : "bow-wow"
+        };
+        
+        delete ourDog.bark;
+        
+        var myDog = {
+            "name" : "Happy Coder",
+            "legs" : 4,
+            "tails" : 1,
+            "friends" : ["freeCodeCamp Campers"],
+            "bark" : "woof"
+        };
+        
+        delete myDog.tails;
+        
+        //USING OBJECTS FOR LOOKUPS
+        
+        //Objects can be thought of as a key-value storage like a dictionary
+        //You can use an object to look up values
+        
+        //Example
+        function phoneticLookup(val) {
+            var result = "";
+            
+            //We can replace the following switch statment with an object
+            
+            /*
+            
+            switch(val) {
+                case "alpha":
+                    result = "Adams";
+                    break;
+                case "bravo":
+                    result = "Boston";
+                    break;
+                case "charlie":
+                    result = "Chicago";
+                    break;
+                case "delta":
+                    result = "Denver";
+                    break;
+                case "echo":
+                    result = "Easy";
+                    break;
+                case "foxtrot":
+                    result = "Frank";
+                    break;
+            }
+            
+            */
+            
+            var lookup = {
+                "alpha" : "Adams",
+                "bravo" : "Boston",
+                "charlie" : "Chicago",
+                "delta" : "Denver",
+                "echo" : "Easy",
+                "foxtrot" : "Frank"
+            };
+            
+            result += lookup[val];
+            return result;
+        }
+        
+        console.log(phoneticLookup("alpha"));
+        console.log(phoneticLookup("bravo"));
+        console.log(phoneticLookup("charlie"));
+        console.log(phoneticLookup("delta"));
+        console.log(phoneticLookup("echo"));
+        console.log(phoneticLookup("foxtrot"));
+        console.log(phoneticLookup("golf"));
+        
+        //TESTING OBJECTS FOR PROPERTIES
+        
+        //You can check of an object has a property by the 'hasOwnProperty()' method
+        
+        //Example
+        
+        var myObj = {
+            "gift" : "pony",
+            "pet" : "kitten",
+            "bed" : "sleigh"
+        };
+        
+        function checkObj(checkProp) {
+            //myObj.hasOwnProperty() returns a boolean value
+            if(myObj.hasOwnProperty(checkProp)) {
+                return myObj[checkProp];    //returns the value of the property if it exists
+            } else {
+                return "Not Found";
+            }        
+            
+        }
+        
+        console.log(checkObj("gift"));
+        console.log(checkObj("parcel"));
+        console.log(checkObj("pet"));
+        
+        //MANIPULATING COMPLEX OBJECTS
+        
+        //A JS object is a way to store flexible data
+        
+        var myMusic = [
+            {
+                "artist" : "Billy Joel",
+                "song" : "Piano Man",
+                "release_year" : 1973,
+                "formats" : ["cd", "BT", "LP"],
+                "gold" : "true"
+            },
+            {
+                "artist" : "Beau Carnes",
+                "title" : "Cereal Man",
+                "release_year" : 2003,
+                "formats" : ["Youtube video"] 
+            }
+            //we have now created our second object in our 'myMusic' array
+        ];
+        
+        //Each of the objects hold data which are properties in key-value pairs
+        //This is very similar to JSON (JavaScript Object Notation)
+        
+        //ACCESSING NESTED OBJECTS
+        
+        //In this example, we have an object with another object nested inside of it
+        //In order to access sub properties of an object, you can chain together the 'dot' or 'bracket' notations
+        
+        //Example
+        var myStorage = {
+            "car" : { 
+                        "inside" : {
+                                        "glove box" : "maps",
+                                        "passenger seat" : "crumbs"
+                                    },
+                        "outside" : {
+                                        "trunk" : "jack"
+                                    }
+                    }
+        };
+        
+        //var gloveBoxContents = undefined;
+        var gloveBoxContents = myStorage.car.inside["glove box"];
+        
+        
+        console.log(gloveBoxContents);
+        
+        //ACCESSING NESTED ARRAYS
+        
+        //Array bracket notation can be changed to access nested arrays
+        
+        var myPlants = [
+            {
+                "type" : "flowers",
+                "list" : ["rose", "tulip", "dandelion"]
+            },
+            {
+                "type" : "trees",
+                "list" : ["fir", "pine", "birch"]
+            }
+        ]
+        
+        var secondTree = myPlants[1].list[1];
+        console.log(secondTree);    //outputs "pine"
+        
+        //We can combine array notation and bracket notation to access the second tree
+        //To do this, we enter the following code:
+        
+        //the trees are the second element of the array
+        
+        //RECORD COLLECTION
+        
+        //This is a coding challenge that we are going to do
+        //We are given an initial object that constitutes a record collection
+        //Each record has an ID, and also has different pieces of information about the record
+        //They don't all have the same information 
+        
+        var collection = {
+            
+            "2548" : {
+                        "album" : "Slippery when wet",
+                        "artist" : "Bon Jovi",
+                        "tracks" : ["Let it Rock", "You give love a bad name"],
+                     },
+            "2468" : {
+                        "album" : "1999",
+                        "artist" : "Prince",
+                        "tracks" : ["1999", "Little Red Corvette"],
+                     },
+            "1245" : {
+                        "artist" : "Robert Palmer",
+                        "tracks" : [],
+                     },
+            "5439" : {
+                        "album" : "ABBA Gold"
+                     }
+            
+        };
+        
+        //keep a copy of the selection for tests
+        //'JSON.parse', 'JSON.stringify' and 'collection' are just a fancy way in JS to copy an object
+        //Remember that in our function, we are going to be changing the collection object, but we wanna have a copy of the original object before anything was changed
+        
+        var collectionCopy = JSON.parse(JSON.stringify(collection));    //i.e JSON.parse(string)
+        
+        //We are to create this 'updateRecords()' functions, where we can pass in the 'id', the 'property' and the 'value',
+        //and it will update our record collection with the property and the value
+        
+        //We should return the full collection
+        
+        //If we have an empty string for the value, it should just completely delete that property
+        //Also, if we have the property of "tracks", and then we have a value, instead of updating the whole array value with our input, 
+        //it should just add the track to the end of this array 
+        
+        function updateRecords(id, prop, value) {
+            
+            //The first thing that we are going to need to test for is if we need to delete the property
+            
+            if(value === "") {
+                delete collection[id][prop];
+            } else if(prop === "tracks") {
+                //There is also another condition here; if the "tracks" property is empty, we need to create it
+                collection[id][prop] = collection[id][prop] || [];
+                collection[id][prop].push(value);
+                //i.e. if it exists, it will equal itself, if ot doesn't, it will equal a new empty array
+            } else {
+                collection[id][prop] = value;
+            }
+            
+            //The next thing that we have to look for is if the property is "tracks" because, for most properties, we are going to override that property
+            //with the value passed into that function
+            //However, if the property is "tracks", we are going to push the value onto the "tracks" array
+            
+            return collection;
+        }
+        
+        //Test
+        console.log(updateRecords("5439", "artist", "ABBA"));
+        console.log(updateRecords("2548", "tracks", "Wanted Dead or Alive"));
+        console.log(updateRecords("1245", "tracks", "Stairway to Heaven"));
+        
+        //ITERATE WITH 'WHILE' LOOPS
+        
+        //Loops allow you to run the same code multiple times
+        //Here, we will discuss a "while" loop, which runs while a certain specfied condition is true and stops when it is no longer true
+        
+        //In this example, we are going to push the digits 0 through 4 onto this array
+        
+        var i = 0;
+        
+        while(i < 5) {
+            myArray.push(i);    //remember that 'i' here is a value
+            i++;
+        }
+        
+        console.log(myArray);       //outputs [0, 1, 2, 3, 4]
+        
+        //ITERATE WITH 'FOR' LOOPS 
+        
+        //A 'for' loop is the most common type of loop in JS
+        //Shown below is an example
+        
+        //Example
+        var ourArray = [];
+        
+        //for(initialisation, condition, expression)
+        for(i = 0; i < 5; i++) {
+            //the initialisation happens before any code inside of the loop runs
+            //once the condition is no longer true, the loop is terminated
+            //the expression is assigned at the end of the loop statement
+            
+            ourArray.push(i);
+        }
+
+        //Example        
+        var myArray = [];
+        
+        for(i = 1; i < 6; i++) {
+            myArray.push(i);
+        }
+        
+        console.log(myArray);   //outputs [1, 2, 3, 4, 5]
+        
+        //ITERATE ODD NUMBERS WITH A 'FOR' LOOP
+        
+        //Loops don't just have to increment one at a time
+        
+        //Example
+        
+        var ourArray = [];
+        
+        for(var i = 0; i < 10; i += 2) {
+            ourArray.push(i);
+        }
+        
+        console.log(ourArray);      //outputs [2, 4, 6, 8, 10]
+        
+        //We will now write a loop that creates an array of ODD numbers
+        
+        var myArray = [];
+        
+        for(var i = 1; i < 11; i += 2) {
+            myArray.push(i);
+        }
+        
+        console.log(myArray);       //outputs [1, 3, 5, 7, 9]
+        
+        //COUNT BACKWARDS WITH A 'FOR' LOOP
+        
+        //A 'for' loop can also be used to count backwards
+        
+        //Example
+        var ourArray = [];
+        
+        for(var i = 10; i > 0; i -= 2) {
+            ourArray.push(i);
+        }
+        
+        console.log(ourArray);      //outputs [10, 8, 6, 4, 2]
+        
+        //We now create an array that counts backwards through the odd numbers
+        
+        var myArray = [];
+        
+        for(var i = 11; i > 1; i -= 2) {
+            myArray.push(i);
+        }
+        
+        console.log(myArray);       //outputs [11, 9, 7, 5, 3]
+        
+        for(var i = 9; i > 0; i -= 2) {
+            myArray.push(i);
+        }
+        
+        console.log(myArray);       //outputs [9, 7, 5, 3, 1]
+        
+    </script>
+    <h1>Practice 1</h1>
+</body>
+</html>

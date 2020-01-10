@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <script>
+        //ITERATE THROUGH AN ARRAY WITH A 'FOR' LOOP 
+        
+        //It is common in JS to iterate through the contents in an array
+        
+        //Let's look at this example
+        
+        var ourArray = [9, 10, 11, 12];
+        var ourTotal = 0;
+        
+        for(var i = 0; ourArray.length; i++) {
+            ourTotal += ourArray[i];
+        }
+        
+        console.log(ourTotal);      //outputs 42
+        
+        var myArray = [2, 3, 4, 5, 6];
+        var total = 0;
+        
+        for(var i = 0; i < myArray.length; i++) {
+            total += myArray[i];
+        }
+        
+        console.log(total);
+        
+        //NESTING 'FOR' LOOPS
+        
+        //If you have a multi-dimensional or nested array, you can use nested 'for' loops to access all of the array elements
+        //In the function below, we use nested 'for' loops to multiply every single value together
+        
+        function multiplyAll(array) {
+            var product = 1;
+            
+            for(var i = 0; i < array.length; i++) {
+                for(var j = 0; j < array[i].length; j ++) {
+                    product *= array[i][j];
+                }
+            }
+            
+            //For every degree to which the array is nested, another nested 'for' loop is required
+            
+            return product;
+        }
+        
+        var product = multiplyAll([ [1, 2], [3, 4], [5, 6, 7] ])
+        
+        console.log(product);       //outputs 5040
+        
+        //ITERATE WITH 'DO.....WHILE' LOOPS
+        
+        //Next, we are going to talk about 'do...while' loops
+        
+        //Example
+        var myArray = [];
+        var i = 10;
+        
+        //Now, while we already talked about 'while' loops
+        
+        //The while loop first checks for the condition before it runs any code in the loop
+        //A 'do..while' loop will always run at least one time, then it will check the condition
+        
+        //The code below won't do anything, because the condition is checked first. i > 5, and so the resulting code block does NOT run
+        while(i < 5) {
+            myArray.push(i);
+            i++;
+        }
+        
+        console.log(i, myArray);        //outputs 10 []
+        
+        //The do..while loop is different
+        
+        
+        do {
+            myArray.push(i);
+            i++;            
+        } while (i < 5)
+        
+        console.log(i, myArray);        //outputs 11 [10]
+        
+        //PROFILE LOOKUP
+        
+        //This is a coding challenge
+        //We have the following array of objects
+        
+        var contacts = 
+            [
+                {
+                    "firstName" : "Akira",
+                    "lastName" : "Laine",
+                    "number" : "0543236543",
+                    "likes" : ["Pizza", "Coding", "Brownie Points"]
+                },
+                {
+                    "firstName" : "Harry",
+                    "lastName" : "Potter",
+                    "number" : "0994372674",
+                    "likes" : ["Hogwarts", "Magic", "Hagrid"]                               
+                },
+                {
+                    "firstName" : "Sherlock",
+                    "lastName" : "Holmes",
+                    "number" : "0487345643",
+                    "likes" : ["Intriguing cases", "Violin"]
+                },
+                {
+                    "firstName" : "Kristian",
+                    "lastName" : "Vos",
+                    "number" : "unknown",
+                    "likes" : ["JavaScript", "Gaming", "Foxes"]
+                }
+            
+            ];
+        
+        //We wish to create a 'lookupProfile()' function where we pass in a first name and a property
+        
+        function lookupProfile(name, prop) {
+            
+            //The first thing that we need to do is iterate through each element in the 'contacts' array
+            for(var i = 0; i < contacts.length; i++) {
+                
+                //The first thing that we need to check is if the name is a name in this list
+                if(name === contacts[i]["firstName"]) {
+                    return contacts[i][prop] || "No such property" ;
+                    
+                    //We need to describe the case in which the name exists but the property does NOT
+                    //A fancy way to do this in JS is use conditional OR
+                    
+                    
+                }
+            }
+            return "Profile NOT found";
+        }
+        
+        //Change these values to test your data
+        var data1 = lookupProfile("Akira", "likes");
+        var data2 = lookupProfile("Shirlock", "likes");  
+        var data3 = lookupProfile("Akira", "hello");  
+        
+        console.log(data1);         //outputs ["Pizza", "Coding", "Brownie Points"]
+        console.log(data2);         //outputs "Profile NOT found"
+        console.log(data3);         //outputs "No such property"
+        
+        //GENERATE RANDOM FRACTIONS
+        
+        //There is a simple way to create a random decimal number in JS using the Math.Random() function
+        
+        function randomFraction() {
+            return Math.random();
+            
+        }
+        
+        console.log(randomFraction());  //outputs a decimal between 0 and 1
+        
+        //GENERATE RANDOM WHOLE NUMBERS
+        
+        //Often you want a random whole number instead of a random decimal number
+        
+        var randomNumberBetween0and19 = Math.floor(Math.random() * 20);
+        
+        //In JavaScript, floor() is a function that is used to return the largest integer value that is less than or equal to a number. 
+        //In other words, the floor() function rounds a number down and returns an integer value.
+        
+        function randomWholeNum() {
+            return Math.floor(Math.random() * 10);
+        }
+        
+        console.log(randomWholeNum());      //outputs a random whole number between 0 and 10
+        
+        //GENERATE RANDOM WHOLE NUMBERS WITHIN A RANGE
+        
+        //You can also generate rendom whole numbers within a range
+        
+        //Example
+        function ourRandomRange(ourMin, ourMax) {
+            //This outputs a random integer between ourMin and ourMax
+            //NB - Check how exactly this works
+            return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
+            
+        }
+        
+        ourRandomRange(1, 9);
+        
+        function randomRange(myMin, myMax) {
+            return 0;
+        }
+        
+        var myRandom = randomRange(5, 15);
+        
+        console.log(myRandom);      //outputs a random number between 5 and 15
+        
+        //USING THE 'parseInt()' FUNCTION
+        
+        //Another useful function is the 'parseInt()' function
+        //It takes a string and returns an integer
+        //A lot of times you want to make sure that you are dealing with integers and not strings for different calculations
+        //If the string cannot be converted into an integer it returns "NaN" for "Not a Number"
+        
+        function convertToInteger(string) {
+            return parseInt(string);
+        }
+        
+        convertToInteger("56");
+        
+        //USING THE 'parseInt()' FUNCTION WITH A RADIX
+        
+        //The parseInt() function can also be used with a radix
+        //The radix specifies the base of the number in the string
+        
+        function convertToInteger(str) {
+            return parseInt(str, 2);    //The second argument is the radix(base)
+            //When the radix is base 2, the computer knows that it is a binary number
+        }
+        
+        convertToInteger("10011");
+        
+        //USING THE CONDITIONAL (TERNARY) OPERATOR
+        
+        //The Ternary Operator is like a one-line 'if/else' expression
+        //Structure
+        //condition ? statement-if-true : statement-if-false
+        
+        function checkEqual(a, b) {
+            /*
+            
+            if(a === b) {
+                return true;
+            } else {
+                return false;
+            }
+            
+            */
+            
+            return a === b ? true : false;
+            
+            //in reality, you would just use 'return a === b', but this illustrates the use of the Ternary Operator in a simple manner
+        }
+        
+        console.log(checkEqual(1, 2));      //outputs 'false'
+        
+        //USE MULTIPLE CONDITIONAL (TERNARY) OPERATORS
+        
+        //One of the useful things about ternary operators is that you can nest them within each other which makes them even more powerful
+        
+        //Example
+        
+        function checkSign(num) {
+            return num > 0 ? "Postive" : (num < 0 ? "Negative" : "Zero");
+        }
+        
+        //Test
+        console.log(checkSign(10));     //outputs "Postive"
+        
+        //DIFFERENCES BETWEEN THE 'var' AND 'let' KEYWORDS
+        
+        //For a long time in JS, if you were going to declare a variable, you had to use the 'var' keyword
+        //However, starting with E56 in 2015, we can now declare variables with 'let' and 'const' as well
+        //One difference is that 'let' does NOT let you declare a variable twice
+        
+        //Example
+        
+        var catName = "Quincy";
+        var quote;
+        
+        var catName = "Beau";
+        
+        function catTalk() {
+            
+            //This enables 'strict mode', which catches common coding mistakes and unsafe actions
+            //A lot of people will use 'use strict' at the top of a full JS file or just within a function to catch coding mistakes such as:
+            //creating a varible and not declaring it with 'var', 'let' or 'const'
+            "use strict";
+            
+            catName = "Oliver";
+            quote = catName + " says Meow";
+        }
+        
+        catTalk();
+        
+        //If we change the 'var' above to 'let', we get a "Duplicate declaration error" in the console
+        //It is good for us to get this error, as we usually don't want to declare the same variable twice within the same scope
+        
+        //COMPARE SCOPES OF THE 'var' AND 'let' KEYWORDS
+        
+        //Another major difference between the 'var' and 'let' keywords is that, when you declare a variable with 'var', it is declared globally
+        //, or locally if declared inside a function
+        //However, the scope of 'let' is limited to the block statement or expression that it was declared in
+        
+        //Example
+        
+        /*
+        
+        function checkScope() {
+            "use strict";
+            var i = "function scope";
+             if(true) {
+                 i = "block scope";
+                 console.log("Block scope i is: ", i);
+             }
+             console.log("Function scope i is: ", i);
+             return i;
+        }
+        
+        */
+        
+        //Check
+        checkScope();
+        
+        //Outputs 
+        //'Block scope i is: ."block scope"
+        //'Function scope i is: ."block scope"
+        
+        //If we want the above function to be 'function scope', we need to use 'let'
+        
+        function checkScope() {
+            "use strict";
+            let i = "function scope";
+             if(true) {
+                let i = "block scope";
+                 console.log("Block scope i is: ", i);
+             }
+             console.log("Function scope i is: ", i);
+             return i;
+        }
+        
+        //Check
+        checkScope();
+        
+        //Outputs 
+        //'Block scope i is: ."block scope"
+        //'Function scope i is: ."function scope"
+        
+        //DECLARE A READ-ONLY VARIABLE WITH THE 'const' KEYWORD
+        
+        //'const' is another way to declare a variable
+        //It has all of the features of 'let', but it is also read-only, i.e you CANNOT reassign a const
+        
+        //Example
+        
+        
+        function printManyTimes(str) {
+            "use strict"
+            
+            var sentence = str + "  is cool!";
+            
+            sentence = str + "  is amazing!";
+            
+            for(var i = 0; i < str.length; i += 2) {
+                console.log(sentence);
+            }
+            
+        }
+        
+        //Test
+        printManyTimes("freeCodeCamp");     //this runs fine using the 'var' keyword
+        
+        //if 'var' is replaced with 'const', an error is generated because const cannot be reassigned like it has been in line 351
+        //This can be very helpful in preventing you from making mistakes further down the road
+        //If you know for sure that you never want to reassign a variable, always use 'const'
+        
+        //Another common convention with 'const' is to use all capital letters
+        //In the above example, this would be 'const SENTENCE';
+        
+        //for the most part, you should either only use 'const' or 'let', but there are certain circumstances where 'var' is most suitable
+        
+        //MUTATE AN ARRAY DECLARED WITH 'CONST'
+        
+        //While you cannor reassign a variable declared with 'const', you can mutate an array
+        
+        //Example
+        
+        const s = [5, 7, 2];
+        
+        function editInPlace() {
+            "use strict"
+            
+            //s = [2, 5, 7];
+            s[0] = 2;
+            s[1] = 5;
+            s[2] = 7;
+        }
+        
+        //Test
+        editInPlace();
+        
+        //This initially throws an error, because s is declared const and so its value cannot be reassigned
+        //However, we can update the array using bracket notation
+        
+        console.log(s);
+        
+        //PREVENT OBJECT MUTATION
+        
+        //As seen previously, a 'const' declaration alone does NOT really protect your data from mutation
+        //If you have an object or an array, you can still mutate it even if it is declared with 'const'
+        
+        //There is a method called 'object.freeze()', that will prevent data mutation
+        //The following function illustrates this
+        
+        //Example
+        
+        function freezeObj() {
+            "use strict"
+            
+            const MATH_CONSTANTS = {
+                PI : 3.14
+            };
+            
+            //At this point, the 'MATH_CONSTANTS' object can still be changed
+            
+            Object.freeze(MATH_CONSTANTS);
+            
+            
+            try{
+                MATH_CONSTANTS.PI = 99;
+            }
+            catch(ex){
+                console.log(ex);
+            }
+            return MATH_CONSTANTS.PI;
+        }
+        
+        const PI = freezeObj();
+        
+        console.log(PI);        //outputs 99
+        //We don't want the value of PI to change, so we add the Object.freeze() method, which takes the object as its sole parameter at line 415
+        //Now the code in the try block is not going to work, so the program will enter the catch clock and print out an error message (TypeError)
+        
+        //So whenever you have an object and you don't want any of the items in the object to change, use 'Object.freeze(object)'
+        
+        //USE ARROW FUNCTIONS TO WRITE CONCISE ANONYMOUS FUNCTIONS
+        
+        //The following function is called an 'anonymous' function:
+        
+        /*
+        
+        var magic = function() {
+            return new Date();
+        };
+        
+        */
+        
+        //This is because it doesn't have a name (signature), only an assignment to the variable 'magic'
+        
+        //Whenever you have an anonymous function, you can convert it to an 'arrow' function
+        //This makes it slightly quicker to write
+        //We can re-write the above as:
+        
+        /*
+        
+        var magic = () => {
+            return new Date();
+        }
+        
+        */
+        
+        //However, we can shorten this even more
+        //If we are just returning one value here, we don't need the 'return' keyword or the curly braces '{}'
+        
+        //So we can just write (better to change 'var' to 'const'):
+        
+        const magic = () => new Date();
+        
+        //WRITE ARROW FUNCTIONS WITH PARAMETERS
+        
+        //Just like in a normal function, you can pass arguments to arrow functions
+        
+        //Example
+        
+        var myConcat = (arr1, arr2) => arr1.concat(arr2);
+        
+        console.log(myConcat([1, 2], [3, 4, 5]));       //outputs [1, 2, 3, 4, 5]
+        
+        //WRITE HIGHER ORDER ARROW FUNCTIONS
+        
+        //Arrow functions work very well with higher order functions such as 'Map()', 'Filter()' and 'Reduce()'
+        //These will be covered another time, but the main thing to know is that these functions take other functions as arguments for processing collections of data
+        
+        //Whenever one function takes another function as an argument, that is a good time for an arrow function
+        
+        //Example
+        
+        const realNumberArray = [4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2];
+        
+        //We want this function to square only the postive integers in 'realNumberArray'
+        //We first need to filter out the positive integers. We will use Map() and filter() to do so
+        
+        const squareList = (arr) => {
+            const squaredIntegers = arr.filter(num => Number.isInteger(num) && num > 0 ).map(x => x * x);            //parenetheses are not required for a single argument
+            
+            //The result of this filter command will be an array of integers that are > 0
+            //After we get the array, we need to get the square of each of the numbers of this array
+            
+            //Here is where we use the 'map()' function
+            //This takes a full function as its argument, which we will represent by an arrow function for convenience
+            
+            //'x' just denotes every element from the array being passed to it
+            
+            //Again, the main point of this example is not to understand the 'filter()' and 'map()' functions, but to see how we can use arrow functions
+            //to succinctly pass functions as arguments into other functions
+            
+            
+            return squaredIntegers;
+        }
+        
+        const squaredIntegers = realNumberArray;
+        console.log(squaredIntegers);       //outputs [16, 1764, 36]
+        
+        //WRITE HIGHER ORDER ARROW FUNCTIONS
+        
+        //In order to create more flexible functions you can use default parameters
+        //The default parameter kicks in when the parameter is not specified or undefined
+        
+        const increment = (function() {
+            
+            //if a value isn't passed in, the default parameter (assigned value 1) kicks in
+            return function increment(number, value = 1) {
+                return number + value;
+            }
+        })();
+        
+        console.log(increment(5, 2));
+        console.log(increment(5));
+        
+        //USE THE 'Rest' OPERATOR WITH FUNCTION PARAMETERS
+        
+        //The 'Rest' operator allows you to create a function that takes a variable number of arguments
+        //The Rest operator is 3 dots '...'
+        
+        const sum = (function() {
+            
+            //this function takes three arguments x, y and z, then converts them to an array
+            //return function sum(x, y, z) {
+            return function sum(...args) {
+                //const args = [x, y, z];
+                return args.reduce((a, b) => (a + b, 0));
+            }
+        })();
+        
+        console.log(sum(1, 2, 3));      //outputs 6
+        
+        //We can now implement the Rest Operator
+        //This will convert all arguments passed into a single array, so now we don't need line 539
+        
+        //The array reduce() method in JavaScript is used to reduce the array to a single value and executes a provided function for each value of the array 
+        //(from left-to-right) and the return value of the function is stored in an accumulator.
+        
+        //USE THE 'Spread' operator to evaluate arrays in place
+        
+        //The 'Spread' operator looks just like the 'Rest' operator (...), except that it expands an already existing array or spreads out an array
+        //So it takes an array and spreads it out into its individual parts
+        
+        //Example
+        
+        const arr1 = ["JAN", "FEB", "MAR", "APR", "MAY"];
+        
+        let arr2;
+        (function() {
+            
+            //Right now, we set arr2 = arr1
+            
+            //In this example, we are NOT actually copying it, because if we change the contents of arr1 (as below), and log arr2, the output will be:
+            //["potato", "FEB", "MAR", "APR", "MAY"]
+            
+            //This is because we have set arr2 to be equal to arr1, but what if we just want arr2 to be a copy of arr1?
+            //We can use the 'Spread' operator [...], as shown in line 571 below
+            //This will spread out the contents of 'arr1' into this new array 'arr2'
+            
+            //So we are NOT making arr2 = arr1
+            //Instead, we are making arr2 equal all of the contents of arr1 so they will be different
+            
+            //If we run line 580 again, it will now say ["JAN", "FEB", "MAR", "APR", "MAY"]
+            arr2 = [...arr1];
+            arr1[0] = "potato";
+        })();
+        console.log(arr2);
+        
+        //USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM OBJECTS
+        
+        //The next few lessons will concern destructuring assignment
+        //This is a syntax for neatly assigning values taken from objects to variables
+        
+        //Example
+        
+        var voxel = {x : 3.6, y: 7.4, z : 6.54};
+        
+        
+        //This is the old way to store variables
+        
+        //var x = voxel.x;    //x = 3.6
+        var y = voxel.y;    //y = 7.4
+        //var z = voxel.z;    //z = 6.54
+        
+        //Using destructuring syntax, there is a simpler and quicker way to assign variables
+        
+        //This time, we are creating variables a, b, and c, and assigning them to the values corresponding to the properties x, y, and z from the voxel object
+        const { x : a, y : b, z : c } = voxel;      //a = 3.6, b = 7.4, z = 6.54
+        
+        const AVG_TEMPERATURES = {
+            today : 77.3,
+            tomorrow : 79
+        };
+        
+        //Now we are going to use destructuring to obtain the average temperature for tomorrow using the AVG_TEMPERATURES as our input object
+        
+        function getTempOfTmrw(avgTemperatures) {
+            "use strict"
+            
+            //const tempOfTomorrow = undefined;
+            const { tomorrow : tempOfTomorrow } = avgTemperatures;
+            
+            return tempOfTomorrow;
+        }
+        
+        console.log(getTempOfTmrw(AVG_TEMPERATURES));       //output = 79
+        
+        //DESTRUCTURING ASSIGNMENT WITH NESTED OBJECTS
+        
+        //We can also use destructuring assignment to assign variables from nested objects
+        
+        //Example
+        
+        //Consider the following nested object
+        const LOCAL_FORECAST = {
+            today : { min : 72, max : 83 },
+            tomorrow : { min : 73.3, max : 84.6 } 
+        };
+        
+        function getMaxOfTmrw(forecast) {
+            "use strict"
+            
+            //const maxOfTomorrow = undefined;
+            
+            const { tomorrow : { max : maxOfTomorrow } } = forecast;
+            
+            //In other words, we set the 'max' that was in 'tomorrow' as 'maxOfTomorrow'
+            
+            return maxOfTomorrow;
+        }
+        
+            console.log(getMaxOfTmrw(LOCAL_FORECAST));
+            
+            //USE DESTRUCTURING ASSIGNMENT TO ASSIGN VARIABLES FROM ARRAYS
+            
+            //Consider this is in the following example
+            
+            //a and x are assigned to the first 2 elements of the array i.e [1, 2]
+            //if we add more elements to the variable array, they be assigned consecutively
+            //i.e. const [z, x, y, w] = [1, 2, 3, 4];
+            
+            //The difference between destructuring arrays and destructuring objects is that you cannot specify which element of the array 
+            //to go into the variable
+            const [z, x] = [1, 2, 3, 4, 5, 6];
+            console.log([z, x]);    //outputs [1, 2]
+            
+            //Similarly, you can skip elements, like so:
+            
+            // const [x, y, , z] = [1, 2, 3, 4, 5, 6] outputs '[1, 2, 4]'
+            
+            //You can also use destructuring arrays to switch the places of variables
+            
+            let p = 8, q = 6
+            (() => {
+                "use strict"
+                
+                //In this function, we use destructuring to switch the places of 'a' and 'b'
+                
+                //This syntax allows us to switch the values from p = q and q = p so [8, 6] becomes [6, 8]
+                //This is similar to the application of matrices in maths
+                [p, q] = [q, p];
+            })();
+            
+            console.log(p);
+            console.log(q);
+            
+            //USE DESTRUCTURING ASSIGNMENT WITH THE 'REST' OPERATOR
+            
+            //We can use destructuring assignment to combined with the 'rest' operator to reassign array elements
+            
+            const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            
+            function removeFirstTwo(list) {
+                
+                //We want to return the array with the first two elements removed
+                //We can use the rest operator as follows:
+                const [ , , ...arr] = list;
+                
+                //const [a, b, ...arr] = list;
+                
+                return arr;
+            }
+            
+            //denotes an array with optional parameters
+            
+            //This says
+            //Do nothing for the first and second elements
+            //put the rest into the 'arr' variable
+            const [ , , ...arr] = removeFirstTwo(source);
+            console.log(arr);       //[3, 4, 5, 6, 7, 8, 9, 10]
+            console.log(source);    //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            
+            //We could have also assigned the first two elements of the array to two new variables
+            
+            //USE DESTRUCTURING ASSIGNMENT TO PASS AN OBJECT AS A FUNCTION'S PARAMETERS
+            
+            //Consider the following function:
+            
+            const stats = {
+                max : 56.78,
+                standard_deviation : 4.4,
+                median : 34.54,
+                mode : 23.87,
+                min : -0.75,
+                average : 35.85
+            };
+        
+            const half = (function() {
+                
+                //Instead of passing the entire stats within this function, we can just pass in what we need
+                
+                //return function half(stats) {
+                
+                //now becomes
+                
+                //When stats is now passed in, it is destructured into just the 'max' and 'min' variables
+                return function half({ max, min }) {
+                    
+                    //return ((stats.min + stats.max)/ 2.0);
+                    //now becomes
+                    return ((max + min) / 2.0);
+                    
+                    //We get the same result as before, only this time we have passed in what we need 
+                    //This is commonly used with API calls when you are getting information from an AJAX request or an API request,
+                    //as they will often have a lot more info than what you need and you can use destructuring to get it down to what we need
+                    //to actually work with
+                    
+                }
+                
+            })();
+            
+            console.log(stats);
+            console.log(half(stats));
+            
+            //CREATE STRING USING TEMPLATE LITERALS
+                    
+            //Template literals are a special type of string that make creating complex strings easier
+            //They are made using the backtick ` symbol
+            
+            const person = {
+                name : "Zodiac Hasbro",
+                age : 36
+            };
+                    
+            //Template literal with multi-line and string interpolation
+            const greeting = `Hello my name is ${person.name}!
+                                I am ${person.age} years old`;
+                                
+            console.log(greeting);  //outputs 'Hello my name is Zodiac Hasbro. I am 56 years old'
+            
+            //A few advantages of using template literals (i.e using backticks instead of quotation marks) are:
+            
+            //1 - You can make multi-line strings
+            //2 - You can add single or double quotation marks within the string without having to escape them
+            //3 - You can put in variables right in the string
+            
+            //Example
+            
+            const result = {
+                success : ["max-length", "no-amd", "prefer-arrow-functions"],
+                failure : ["no-var", "var-on-top", "linebreak"],
+                skipped : ["id-blacklist", "no-dup-keys"]
+            };
+            
+            function makeList(arr) {
+                const resultDisplayArray = [];
+                
+                for(let i = 0; i < arr.length; i++) {
+                    resultDisplayArray.push(`<li class="text-warning">${result.failure[i]}</li>`);
+                }
+                
+                return resultDisplayArray;
+            }
+            
+            const resultDisplayArray = makeList(result.failure);
+            
+            console.log(result);
+            
+            //WRITING CONCISE OBJECT LITERAL DECLARATIONS USING SIMPLE FIELDS
+            
+            //ES6 added some nice support for easily defining object literals
+            
+            const createPerson = (name, age, gender) => ({
+                
+                //The return value is an object with the parameters as values corresponding to the 1st, 2nd and 3rd keys, respectively
+                
+                /*
+                
+                return {
+                    name : name,
+                    age : age,
+                    gender : gender
+                }
+                
+                */
+                
+                //However, there is an easier way to do this
+                
+                //If you know that you want to create an object where the key is the name of the variable and the value is the value of the variable, you can do the following:
+                name, age, gender       //JS knows that its going to return this object and that its going to have 3 K-V pairs
+                //This outputs exactly the same as the previous code
+            });
+            
+            console.log(createPerson("Zodiac Hasbro", 56, "male"));
+            
+            //WRITE CONCISE DECLARATIVE FUNCTIONS
+            
+            //An object can contain a function
+            
+            //The following illustrates the long way to put a function within an object:
+            
+            const bicycle = {
+                gear : 2,
+                
+                /*
+                setGear : function(newGear) {
+                                                "use strict";
+                                                this.gear = newGear;
+                                            }
+                */
+                
+                //instead of using the 'function' keyword, we can just write like so:
+                
+                setGear(newGear) {
+                                                "use strict";
+                                                this.gear = newGear;
+                                            }
+            };
+            
+            bicycle.setGear(3);
+            console.log(bicycle.gear);
+            
+            //USE CLASS SYNTAX TO DEFINE A CONSTRUCTOR FUNCTION
+            
+            //ES6 provides a syntax to help create objects using the 'class' keyword
+            
+            /*
+            
+            var spaceShuttle = function(targetPlanet) {
+                this.targetPlanet = targetPlanet;
+            }
+            
+            */
+            class spaceShuttle {
+                constructor(targetPlanet) {
+                    this.targetPlanet = targetPlanet;
+                }
+            } 
+
+                        
+            var zeus = new spaceShuttle('Jupiter');
+
+            console.log(zeus.targetPlanet);     //outputs 'Jupiter'
+            
+            //The 'class' syntax replaces the constructor function creation
+            //This worlks exactly the same as the previous function
+            
+            //We are now going to do the same thign for a class 'Vegetable'
+            
+            //Example
+            
+            function makeClass() {
+                class Vegetable {
+                    constructor(name) {
+                        this.name = name;
+                    }
+                }
+                return Vegetable;
+            }
+            
+            
+            //now that we have this, we can set makeClass() to a const called Vegetable
+            const Vegetable = makeClass();
+            const carrot = new Vegetable('carrot');
+            
+            console.log(carrot.name);       //outputs 'carrot'
+            
+            //USE GETTERS AND SETTERS TO CONTROL ACCESS TO AN OBJECT
+            
+            //With a class object, you often want to obtain values from an object and set values to a property within an object
+            
+            //Example
+            
+            class Book {
+                
+                constructor(author) {
+                    this._author = author;
+                }
+                
+                //'getter' functions are meant to simply get or return the the value of an object's private instance variable to the user without the user directly accessing 
+                //the private variable
+                //You are never actually interacting with the 'author', just getting and setting the value
+                get writer() {
+                    return this._author
+                }
+                
+                set writer(updatedAuthor) {
+                    this._author = updatedAuthor;
+                }
+            }
+            
+            //We will now make our own getter and setter for the Thermostat class
+            
+            
+            
+            function makeClass() {
+                
+                class Thermostat {
+                    constructor(temp) {
+                        //'this' keyword implies that this variable is only accessible from this class here
+                        //Whenever you start a variable with an underscore '_', this generally signifies that it is a private variable, i.e it is NOT
+                        //supposed to be accessed outside of that scope
+                        this._temperature = (5 / 9) * (temp - 32);
+                    }
+                    
+                    //Now we can create the getter and setter
+                    //We are going to create getter and setter methods to obtain the temperature in Celsius
+                    //Since the value for the private instance variable 'temperature' has already been set in Celsius during initialisation of the constructor,
+                    //there is no need to adjust the getter and setter methods
+                    
+                    get temperature() {
+                        return this._temperature;
+                    }
+                    
+                    set temperature(newTemp) {
+                        this._temperature = newTemp;
+                    }
+                }
+                return Thermostat;
+            }
+            
+            const Thermostat = makeClass();
+            const thermos = new Thermostat(26);
+            let temp = thermos.temperature;
+            
+            //Notice here how the getter and setter methods do not have parentheses. They are called just like private instance variables
+            thermos.temperature = 26;
+            
+            temp = thermos.temperature;
+            
+            console.log(temp);      //outputs the new temperature value that was set
+            
+            //UNDERSTANDING THE DIFFERENCES BETWEEN 'import' AND 'require'
+            
+            //In the past, people would use the 'require' function to import code from other files
+            //However, we now have 'import' and 'export'
+            //You can export code in one file and import it in another file
+            //It also allows you to only import certain functions from a file or certain variables
+            
+            import { capitalizeString } from "assets/javascripts/practice.js"
+            
+            const cap = capitalizeString('hello');
+            
+            //Right now this just gives a ReferenceError, because there is no 'capitalizeString()' function in this file
+            
+            console.log(cap);
+            
+            //USE 'export' TO RE-USE A CODE BLOCK
+            
+            //We talked a little bit about 'export' in the last lesson, but now we will go into more detail
+            //You export functions and variables from one file, so that you can import them in another
+            
+            //USING '*'  TO IMPORT EVERYTHING FROM A FILE 
+            
+            //If a file exports a muiltitude of different things, you can import each thing individually or import everything
+            
+            //Here is how to import everything from a file
+            
+            //We must create a file to store everything in 
+            
+            import * as capitalizeStrings from "capitalize_strings.js"
+            
+            //CREATE AN EXPORT FALLBACK WITH EXPORT DEFAULT
+            
+            //Before when talking about exports, we talked about named exports
+            
+            //There is also something called an 'export default'
+            //This is fallback export, and it is often used if you only want to export one thing from a file
+            
+            //say we wanted the function below to be our fallback export
+            
+            export default function subtract(x, y) { return x - y }
+            
+            //Now, we know that this is the fallback, i.e. this is the one thing that we are going to export from this file
+            
+            //IMPORT A DEFAULT EXPORT
+            
+            //So we talked about exporting a default export
+            //Now we will see how to import a default export
+            //It is basically the same as before, just with a slight difference
+            
+            //We pretend that we have a file called math_functions that has a default method called 'subtract'
+            
+            //import subtract...
+            
+            //Here we have already reached the difference
+            //If it is NOT a default export you would put curly braces around it
+            //However, it IS a default export, so we are NOT going to use curly braces, but we still have to say where it is from
+            
+            //import subtract from "math_functions.js"
+        
+        </script>
+    <h1>Practice 2</h1>
+    </body>
+</html>
